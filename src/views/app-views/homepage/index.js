@@ -6,26 +6,34 @@ const Homepage = ({ match }) => (
 	<Suspense fallback={<Loading cover='content' />}>
 		<Switch>
 			<Route
-				path={`${match.url}/mail`}
-				component={lazy(() => import(`./mail`))}
+				path={`${match.url}/film`}
+				component={lazy(() => import(`./film`))}
 			/>
 			<Route
-				path={`${match.url}/chat`}
-				component={lazy(() => import(`./chat`))}
+				path={`${match.url}/list`}
+				component={lazy(() => import(`./list`))}
 			/>
 			<Route
-				path={`${match.url}/calendar`}
-				component={lazy(() => import(`./calendar`))}
+				path={`${match.url}/image`}
+				component={lazy(() => import(`./image`))}
 			/>
 			<Route
-				path={`${match.url}/project`}
-				component={lazy(() => import(`./project`))}
+				path={`${match.url}/ads`}
+				component={lazy(() => import(`./ads`))}
 			/>
 			<Route
-				path={`${match.url}/ecommerce`}
-				component={lazy(() => import(`./e-commerce`))}
+				path={`${match.url}/article`}
+				component={lazy(() => import(`./article`))}
 			/>
-			<Redirect from={`${match.url}`} to={`${match.url}/mail`} />
+			<Route
+				path={`${match.url}/video`}
+				component={lazy(() => import(`./video`))}
+			/>
+			<Route
+				path={`${match.url}/setting`}
+				component={lazy(() => import(`./setting`))}
+			/>
+			<Redirect from={`${match.url}`} to={`${match.url}/film`} />
 		</Switch>
 	</Suspense>
 )

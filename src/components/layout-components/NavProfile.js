@@ -14,7 +14,7 @@ export const NavProfile = ({ signOut }) => {
 				<div className='d-flex'>
 					<Avatar size={45} src={profileImg} />
 					<div className='pl-3'>
-						<h4 className='mb-0'>Van Hung Nguyen</h4>
+						<h4 className='mb-0'>Van Hung</h4>
 						<span className='text-muted'>Frontend Developer</span>
 					</div>
 				</div>
