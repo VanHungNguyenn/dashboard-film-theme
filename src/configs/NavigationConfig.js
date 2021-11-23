@@ -25,6 +25,11 @@ import {
 	BookOutlined,
 	FileUnknownOutlined,
 	ProfileOutlined,
+	VideoCameraOutlined,
+	UnorderedListOutlined,
+	FileImageOutlined,
+	SettingOutlined,
+	PlayCircleOutlined,
 } from '@ant-design/icons'
 import { APP_PREFIX_PATH, AUTH_PREFIX_PATH } from 'configs/AppConfig'
 
@@ -176,14 +181,14 @@ const homepageNavTree = [
 		key: 'homepage',
 		path: `${APP_PREFIX_PATH}/homepage`,
 		title: 'sidenav.homepage',
-		icon: AppstoreOutlined,
+		icon: DashboardOutlined,
 		breadcrumb: false,
 		submenu: [
 			{
 				key: 'homepage-film',
 				path: `${APP_PREFIX_PATH}/homepage/film`,
 				title: 'sidenav.homepage.film',
-				icon: MailOutlined,
+				icon: VideoCameraOutlined,
 				breadcrumb: true,
 				submenu: [],
 			},
@@ -191,12 +196,12 @@ const homepageNavTree = [
 				key: 'homepage-list',
 				path: `${APP_PREFIX_PATH}/homepage/list`,
 				title: 'sidenav.homepage.list',
-				icon: BulbOutlined,
+				icon: UnorderedListOutlined,
 				breadcrumb: true,
 				submenu: [
 					{
 						key: 'homepage-category-list',
-						path: `${APP_PREFIX_PATH}/homepage/category/list`,
+						path: `${APP_PREFIX_PATH}/homepage/list/category`,
 						title: 'sidenav.homepage.category.list',
 						icon: '',
 						breadcrumb: true,
@@ -204,7 +209,7 @@ const homepageNavTree = [
 					},
 					{
 						key: 'homepage-country-list',
-						path: `${APP_PREFIX_PATH}/homepage/country/list`,
+						path: `${APP_PREFIX_PATH}/homepage/list/country`,
 						title: 'sidenav.homepage.country.list',
 						icon: '',
 						breadcrumb: true,
@@ -212,7 +217,7 @@ const homepageNavTree = [
 					},
 					{
 						key: 'homepage-actor-list',
-						path: `${APP_PREFIX_PATH}/homepage/actor/list`,
+						path: `${APP_PREFIX_PATH}/homepage/list/actor`,
 						title: 'sidenav.homepage.actor.list',
 						icon: '',
 						breadcrumb: true,
@@ -220,7 +225,7 @@ const homepageNavTree = [
 					},
 					{
 						key: 'homepage-director-list',
-						path: `${APP_PREFIX_PATH}/homepage/director/list`,
+						path: `${APP_PREFIX_PATH}/homepage/list/director`,
 						title: 'sidenav.homepage.director.list',
 						icon: '',
 						breadcrumb: true,
@@ -228,7 +233,7 @@ const homepageNavTree = [
 					},
 					{
 						key: 'homepage-tags-list',
-						path: `${APP_PREFIX_PATH}/homepage/tags/list`,
+						path: `${APP_PREFIX_PATH}/homepage/list/tags`,
 						title: 'sidenav.homepage.tags.list',
 						icon: '',
 						breadcrumb: true,
@@ -236,7 +241,7 @@ const homepageNavTree = [
 					},
 					{
 						key: 'homepage-server-list',
-						path: `${APP_PREFIX_PATH}/homepage/server/list`,
+						path: `${APP_PREFIX_PATH}/homepage/list/server`,
 						title: 'sidenav.homepage.server.list',
 						icon: '',
 						breadcrumb: true,
@@ -248,7 +253,7 @@ const homepageNavTree = [
 				key: 'homepage-image',
 				path: `${APP_PREFIX_PATH}/homepage/image`,
 				title: 'sidenav.homepage.image',
-				icon: MessageOutlined,
+				icon: FileImageOutlined,
 				breadcrumb: true,
 				submenu: [],
 			},
@@ -272,7 +277,7 @@ const homepageNavTree = [
 				key: 'homepage-video',
 				path: `${APP_PREFIX_PATH}/homepage/video`,
 				title: 'sidenav.homepage.video',
-				icon: CalendarOutlined,
+				icon: PlayCircleOutlined,
 				breadcrumb: true,
 				submenu: [],
 			},
@@ -280,7 +285,7 @@ const homepageNavTree = [
 				key: 'homepage-setting',
 				path: `${APP_PREFIX_PATH}/homepage/setting`,
 				title: 'sidenav.homepage.setting',
-				icon: CalendarOutlined,
+				icon: SettingOutlined,
 				breadcrumb: true,
 				submenu: [],
 			},

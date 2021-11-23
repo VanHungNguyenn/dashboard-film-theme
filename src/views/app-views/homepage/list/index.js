@@ -9,7 +9,6 @@ import Server from './server'
 
 const List = (props) => {
 	const { match } = props
-	console.log(match)
 
 	return (
 		<Switch>

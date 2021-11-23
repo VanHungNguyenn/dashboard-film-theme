@@ -1,5 +1,11 @@
 [
 	{
+		"langName": "Vietnam",
+		"langId": "vi",
+		"icon": "vn",
+		"lang": "Vi"
+	},
+	{
 		"langName": "English",
 		"langId": "en",
 		"icon": "us",
