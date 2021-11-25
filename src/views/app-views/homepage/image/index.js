@@ -61,7 +61,7 @@ const Image = () => {
 			title: 'Image',
 			dataIndex: 'image',
 			render: (_, record) => {
-				return <img src={record.image} alt='' width={100} />
+				return <img src={record.image} alt='' width={50} />
 			},
 		},
 		{

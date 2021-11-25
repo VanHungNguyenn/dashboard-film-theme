@@ -1,32 +1,28 @@
 [
 	{
+		"id": 1,
 		"key": "2captcha",
 		"type": "String",
 		"value": "226c1d97d5e5c78e163ac857e5c5cebd"
 	},
 	{
+		"id": 2,
 		"key": "sitekey_getlink",
 		"type": "String",
 		"value": "6LdmPaAaAAAAAAZ57otOc0kv9b0xK12VarX-9NW2"
 	},
 	{
+		"id": 3,
 		"key": "pathCache",
 		"type": "String",
 		"value": "/home/domain.com/.cache/"
 	},
 	{
+		"id": 4,
 		"key": "enableCache",
 		"type": "Boolean",
 		"value": "false"
 	},
-	{
-		"key": "limit",
-		"type": "Number",
-		"value": "10"
-	},
-	{
-		"key": "download",
-		"type": "Boolean",
-		"value": "true"
-	}
+	{ "id": 5, "key": "limit", "type": "Number", "value": "10" },
+	{ "id": 6, "key": "download", "type": "Boolean", "value": "true" }
 ]
