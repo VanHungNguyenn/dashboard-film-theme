@@ -29,7 +29,7 @@ const Video = () => {
 	}
 
 	const handleShowType = (value) => {
-		if (value !== 'Active') {
+		if (value !== 'Status') {
 			const key = 'active'
 			const data = utils.filterArray(VideoData, key, value)
 			setList(data)
@@ -68,9 +68,13 @@ const Video = () => {
 			dataIndex: 'time',
 		},
 		{
-			title: 'Active',
+			title: 'Status',
 			dataIndex: 'active',
 			sorter: (a, b) => utils.antdTableSorter(a, b, 'active'),
+		},
+		{
+			title: 'Edited date',
+			dataIndex: 'date',
 		},
 		{
 			title: 'Action',
@@ -110,13 +114,13 @@ const Video = () => {
 					</div>
 					<div className='mb-3'>
 						<Select
-							defaultValue='Active'
+							defaultValue='Status'
 							className='w-100'
 							style={{ minWidth: 180 }}
 							onChange={handleShowType}
-							placeholder='Active'
+							placeholder='Status'
 						>
-							<Option value='Active'>Active</Option>
+							<Option value='Status'>Status</Option>
 							{types.map((elm, i) => (
 								<Option key={i} value={elm}>
 									{elm}
@@ -144,7 +148,7 @@ const Video = () => {
 							block
 							disabled={true}
 						>
-							Delete key
+							Delete choose items
 						</Button>
 					</div>
 				</Flex>

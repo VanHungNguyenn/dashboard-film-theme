@@ -1,108 +1,167 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
-import { Table, Tag, Space } from 'antd'
+import React, { useState } from 'react'
+import { Card, Table, Select, Input, Button, Tooltip } from 'antd'
+import VideoData from 'assets/data/article.data.json'
+import {
+	DeleteOutlined,
+	SearchOutlined,
+	PlusCircleOutlined,
+	EditOutlined,
+} from '@ant-design/icons'
 
-const data = [
-	{
-		key: '1',
-		name: 'John Brown',
-		age: 32,
-		address: 'New York No. 1 Lake Park',
-		tags: ['nice', 'developer'],
-	},
-	{
-		key: '2',
-		name: 'Jim Green',
-		age: 42,
-		address: 'London No. 1 Lake Park',
-		tags: ['loser'],
-	},
-	{
-		key: '3',
-		name: 'Joe Black',
-		age: 32,
-		address: 'Sidney No. 1 Lake Park',
-		tags: ['cool', 'teacher'],
-	},
-]
+import Flex from 'components/shared-components/Flex'
+import utils from 'utils'
 
-const columns = [
-	{
-		title: 'Name',
-		dataIndex: 'name',
-		key: 'name',
-		render: (text) => <a>{text}</a>,
-	},
-	{
-		title: 'Age',
-		dataIndex: 'age',
-		key: 'age',
-		sorter: {
-			compare: (a, b) => a.age - b.age,
-			multiple: 3,
-		},
-	},
-	{
-		title: 'Address',
-		dataIndex: 'address',
-		key: 'address',
-	},
-	{
-		title: 'Tags',
-		dataIndex: 'tags',
-		key: 'tags',
-		render: (tags) => (
-			<>
-				{tags.map((tag, i) => {
-					let color = tag.length > 5 ? 'geekblue' : 'green'
-					if (tag === 'loser') {
-						color = 'volcano'
-					}
+const { Option } = Select
 
-					return (
-						<Tag color={color} key={i}>
-							{tag.toUpperCase()}
-						</Tag>
-					)
-				})}
-			</>
-		),
-	},
-	{
-		title: 'Action',
-		key: 'action',
-		render: (text, record) => (
-			<Space size='middle'>
-				<a>Invite {record.name}</a>
-				<a>Delete</a>
-			</Space>
-		),
-	},
-]
-
-const rowSelection = {
-	onChange: (selectedRowKeys, selectedRows) => {
-		console.log(
-			`selectedRowKeys: ${selectedRowKeys}`,
-			'selectedRows: ',
-			selectedRows
-		)
-	},
-}
+const types = ['Active', 'Not active']
 
 const Article = () => {
+	const [list, setList] = useState(VideoData)
+	const [selectedRows, setSelectedRows] = useState([])
+	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+
+	const onSearch = (e) => {
+		const value = e.currentTarget.value
+		const searchArray = e.currentTarget.value ? list : VideoData
+		const data = utils.wildCardSearch(searchArray, value)
+		setList(data)
+		setSelectedRowKeys([])
+	}
+
+	const handleShowType = (value) => {
+		if (value !== 'Status') {
+			const key = 'active'
+			const data = utils.filterArray(VideoData, key, value)
+			setList(data)
+		} else {
+			setList(VideoData)
+		}
+	}
+
+	const addKey = () => {}
+	const deleteKey = () => {}
+
+	const rowSelection = {
+		onChange: (key, rows) => {
+			setSelectedRows(rows)
+			setSelectedRowKeys(key)
+		},
+	}
+
+	const tableColumns = [
+		{
+			title: 'Image',
+			dataIndex: 'image',
+		},
+		{
+			title: 'Title',
+			dataIndex: 'title',
+			sorter: (a, b) => utils.antdTableSorter(a, b, 'title'),
+		},
+		{
+			title: 'Url',
+			dataIndex: 'url',
+			sorter: (a, b) => utils.antdTableSorter(a, b, 'url'),
+		},
+		{
+			title: 'Status',
+			dataIndex: 'active',
+			sorter: (a, b) => utils.antdTableSorter(a, b, 'active'),
+		},
+		{
+			title: 'Edited date',
+			dataIndex: 'date',
+		},
+		{
+			title: 'Action',
+			dataIndex: 'actions',
+			render: (_, elm) => (
+				<div className='text-right d-flex justify-content-end'>
+					<Tooltip title='Edit'>
+						<Button
+							type='primary'
+							className='mr-2'
+							icon={<EditOutlined />}
+							size='small'
+						/>
+					</Tooltip>
+					<Tooltip title='Delete'>
+						<Button danger icon={<DeleteOutlined />} size='small' />
+					</Tooltip>
+				</div>
+			),
+		},
+	]
+
 	return (
-		<>
-			<Table
-				rowSelection={{
-					type: 'checkbox',
-					...rowSelection,
-				}}
-				dataSource={data}
-				columns={columns}
-				bordered={true}
-			/>
-		</>
+		<Card>
+			<Flex
+				alignItems='center'
+				justifyContent='between'
+				mobileFlex={false}
+			>
+				<Flex className='mb-1' mobileFlex={false}>
+					<div className='mr-md-3 mb-3'>
+						<Input
+							placeholder='Search'
+							prefix={<SearchOutlined />}
+							onChange={(e) => onSearch(e)}
+						/>
+					</div>
+					<div className='mb-3'>
+						<Select
+							defaultValue='Status'
+							className='w-100'
+							style={{ minWidth: 180 }}
+							onChange={handleShowType}
+							placeholder='Status'
+						>
+							<Option value='Status'>Status</Option>
+							{types.map((elm, i) => (
+								<Option key={i} value={elm}>
+									{elm}
+								</Option>
+							))}
+						</Select>
+					</div>
+				</Flex>
+				<Flex mobileFlex={false} justifyContent='end'>
+					<div className='mr-1'>
+						<Button
+							onClick={addKey}
+							type='primary'
+							icon={<PlusCircleOutlined />}
+							block
+						>
+							Add key
+						</Button>
+					</div>
+					<div>
+						<Button
+							onClick={deleteKey}
+							type='danger'
+							icon={<DeleteOutlined />}
+							block
+							disabled={true}
+						>
+							Delete choose items
+						</Button>
+					</div>
+				</Flex>
+			</Flex>
+			<div className='table-responsive'>
+				<Table
+					columns={tableColumns}
+					dataSource={list}
+					rowKey='name'
+					rowSelection={{
+						type: 'checkbox',
+						...rowSelection,
+					}}
+					bordered={true}
+				/>
+			</div>
+		</Card>
 	)
 }
 
