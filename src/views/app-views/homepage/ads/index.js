@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Card, Table, Select, Input, Button, Badge, Menu } from 'antd'
+import React from 'react'
+import { Badge } from 'antd'
 
 const getStockStatus = (stockCount) => {
 	if (stockCount >= 10) {

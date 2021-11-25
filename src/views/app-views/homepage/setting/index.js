@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Card, Table, Select, Input, Button, Badge, Menu } from 'antd'
+import { Card, Table, Select, Input, Button } from 'antd'
 import SettingData from 'assets/data/setting.data.json'
 import {
-	EyeOutlined,
 	DeleteOutlined,
 	SearchOutlined,
 	PlusCircleOutlined,
@@ -49,20 +48,20 @@ const Setting = () => {
 		},
 	}
 
-	const deleteRow = (row) => {
-		const objKey = 'id'
-		let data = list
-		if (selectedRows.length > 1) {
-			selectedRows.forEach((elm) => {
-				data = utils.deleteArrayRow(data, objKey, elm.id)
-				setList(data)
-				setSelectedRows([])
-			})
-		} else {
-			data = utils.deleteArrayRow(data, objKey, row.id)
-			setList(data)
-		}
-	}
+	// const deleteRow = (row) => {
+	// 	const objKey = 'id'
+	// 	let data = list
+	// 	if (selectedRows.length > 1) {
+	// 		selectedRows.forEach((elm) => {
+	// 			data = utils.deleteArrayRow(data, objKey, elm.id)
+	// 			setList(data)
+	// 			setSelectedRows([])
+	// 		})
+	// 	} else {
+	// 		data = utils.deleteArrayRow(data, objKey, row.id)
+	// 		setList(data)
+	// 	}
+	// }
 
 	const tableColumns = [
 		{
