@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Card, Table, Select, Input, Button } from 'antd'
+import { Card, Table, Select, Input, Button, Tooltip } from 'antd'
 import SettingData from 'assets/data/setting.data.json'
 import {
 	DeleteOutlined,
 	SearchOutlined,
 	PlusCircleOutlined,
+	EditOutlined,
 } from '@ant-design/icons'
 
 import Flex from 'components/shared-components/Flex'
@@ -48,26 +49,10 @@ const Setting = () => {
 		},
 	}
 
-	// const deleteRow = (row) => {
-	// 	const objKey = 'id'
-	// 	let data = list
-	// 	if (selectedRows.length > 1) {
-	// 		selectedRows.forEach((elm) => {
-	// 			data = utils.deleteArrayRow(data, objKey, elm.id)
-	// 			setList(data)
-	// 			setSelectedRows([])
-	// 		})
-	// 	} else {
-	// 		data = utils.deleteArrayRow(data, objKey, row.id)
-	// 		setList(data)
-	// 	}
-	// }
-
 	const tableColumns = [
 		{
 			title: 'Key',
 			dataIndex: 'key',
-			render: (_, record) => <div className='d-flex'>Hello</div>,
 			sorter: (a, b) => utils.antdTableSorter(a, b, 'key'),
 		},
 		{
@@ -83,7 +68,21 @@ const Setting = () => {
 		{
 			title: 'Action',
 			dataIndex: 'actions',
-			render: (_, elm) => <div className='text-right'></div>,
+			render: (_, elm) => (
+				<div className='text-right d-flex justify-content-end'>
+					<Tooltip title='Edit'>
+						<Button
+							type='primary'
+							className='mr-2'
+							icon={<EditOutlined />}
+							size='small'
+						/>
+					</Tooltip>
+					<Tooltip title='Delete'>
+						<Button danger icon={<DeleteOutlined />} size='small' />
+					</Tooltip>
+				</div>
+			),
 		},
 	]
 
@@ -111,8 +110,8 @@ const Setting = () => {
 							placeholder='Types'
 						>
 							<Option value='Types'>Types</Option>
-							{types.map((elm) => (
-								<Option key={elm} value={elm}>
+							{types.map((elm, i) => (
+								<Option key={i} value={elm}>
 									{elm}
 								</Option>
 							))}
@@ -157,13 +156,12 @@ const Setting = () => {
 				<Table
 					columns={tableColumns}
 					dataSource={list}
-					rowKey='id'
+					rowKey='name'
 					rowSelection={{
-						selectedRowKeys: selectedRowKeys,
 						type: 'checkbox',
-						preserveSelectedRowKeys: false,
 						...rowSelection,
 					}}
+					bordered={true}
 				/>
 			</div>
 		</Card>

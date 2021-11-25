@@ -54,20 +54,20 @@ const MapChart = ({ setTooltipContent }) => {
 							onMouseLeave={() => {
 								setTooltipContent('')
 							}}
-							// style={{
-							// 	default: {
-							// 		fill: "#D6D6DA",
-							// 		outline: "none"
-							// 	},
-							// 	hover: {
-							// 		fill: "#F53",
-							// 		outline: "none"
-							// 	},
-							// 	pressed: {
-							// 		fill: "#E42",
-							// 		outline: "none"
-							// 	}
-							// }}
+							style={{
+								default: {
+									fill: '#D6D6DA',
+									outline: 'none',
+								},
+								hover: {
+									fill: '#F53',
+									outline: 'none',
+								},
+								pressed: {
+									fill: '#E42',
+									outline: 'none',
+								},
+							}}
 						/>
 					))
 				}
