@@ -1,0 +1,32 @@
+[
+	{
+		"key": "2captcha",
+		"type": "String",
+		"value": "226c1d97d5e5c78e163ac857e5c5cebd"
+	},
+	{
+		"key": "sitekey_getlink",
+		"type": "String",
+		"value": "6LdmPaAaAAAAAAZ57otOc0kv9b0xK12VarX-9NW2"
+	},
+	{
+		"key": "pathCache",
+		"type": "String",
+		"value": "/home/domain.com/.cache/"
+	},
+	{
+		"key": "enableCache",
+		"type": "Boolean",
+		"value": "false"
+	},
+	{
+		"key": "limit",
+		"type": "Number",
+		"value": "10"
+	},
+	{
+		"key": "download",
+		"type": "Boolean",
+		"value": "true"
+	}
+]
