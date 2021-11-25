@@ -1,87 +1,173 @@
-import React from 'react'
-import { Avatar, Button, Typography, Row, Col, Pagination } from 'antd'
-import { UserOutlined, MenuFoldOutlined } from '@ant-design/icons'
+import React, { useState } from 'react'
+import { Card, Table, Select, Input, Button, Tooltip } from 'antd'
+import ImageData from 'assets/data/image.data.json'
+import {
+	DeleteOutlined,
+	SearchOutlined,
+	PlusCircleOutlined,
+	EditOutlined,
+} from '@ant-design/icons'
 
-const { Title } = Typography
+import Flex from 'components/shared-components/Flex'
+import utils from 'utils'
+
+const { Option } = Select
+
+const types = [
+	'Poster',
+	'Thumbnails',
+	'Video',
+	'Episode',
+	'Actor',
+	'Director',
+	'Post',
+]
 
 const Image = () => {
+	const [list, setList] = useState(ImageData)
+	const [selectedRows, setSelectedRows] = useState([])
+	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+
+	const onSearch = (e) => {
+		const value = e.currentTarget.value
+		const searchArray = e.currentTarget.value ? list : ImageData
+		const data = utils.wildCardSearch(searchArray, value)
+		setList(data)
+		setSelectedRowKeys([])
+	}
+
+	const handleShowType = (value) => {
+		if (value !== 'Types') {
+			const key = 'type'
+			const data = utils.filterArray(ImageData, key, value)
+			setList(data)
+		} else {
+			setList(ImageData)
+		}
+	}
+
+	const addKey = () => {}
+	const deleteKey = () => {}
+
+	const rowSelection = {
+		onChange: (key, rows) => {
+			setSelectedRows(rows)
+			setSelectedRowKeys(key)
+		},
+	}
+
+	const tableColumns = [
+		{
+			title: 'Image',
+			dataIndex: 'image',
+			render: (_, record) => {
+				return <img src={record.image} alt='' width={100} />
+			},
+		},
+		{
+			title: 'Name',
+			dataIndex: 'name',
+			sorter: (a, b) => utils.antdTableSorter(a, b, 'name'),
+		},
+		{
+			title: 'Types',
+			dataIndex: 'type',
+			sorter: (a, b) => utils.antdTableSorter(a, b, 'type'),
+		},
+		{
+			title: 'Edited date',
+			dataIndex: 'date',
+		},
+		{
+			title: 'Action',
+			dataIndex: 'actions',
+			render: (_, elm) => (
+				<div className='text-right d-flex justify-content-end'>
+					<Tooltip title='Edit'>
+						<Button
+							type='primary'
+							className='mr-2'
+							icon={<EditOutlined />}
+							size='small'
+						/>
+					</Tooltip>
+					<Tooltip title='Delete'>
+						<Button danger icon={<DeleteOutlined />} size='small' />
+					</Tooltip>
+				</div>
+			),
+		},
+	]
+
 	return (
-		<>
-			<div className='text-center mt-3'>
-				<Avatar size={80} icon={<UserOutlined />} />
-				<h3 className='mt-2 mb-0'>VanHung</h3>
-				<span className='text-muted'>Web developer</span>
-			</div>
-			<div className='button'>
-				<Button
-					type='primary'
-					loading
-					size='large'
-					block
-					className='mr-2 mb-2'
-				>
-					Large Primary Button
-				</Button>
-				<Button type='primary' danger className='mr-2'>
-					Normal Primary Button
-				</Button>
-				<Button type='primary' size='small' ghost className='mr-2'>
-					Small Primary Button
-				</Button>
-				<Button
-					shape='circle'
-					icon={<UserOutlined />}
-					className='mr-2'
-				></Button>
-				<Button shape='round' icon={<UserOutlined />} className='mr-2'>
-					Button
-				</Button>
-				<Button className='mr-2'>Default Button</Button>
-				<Button type='dashed' className='mr-2'>
-					Dashed Button
-				</Button>
-				<br />
-				<Button type='text'>Text Button</Button>
-				<Button type='link'>Link Button</Button>
-			</div>
-			<div className='mt-3 icon'>
-				<MenuFoldOutlined rotate='45' className='mr-5' />
-				<MenuFoldOutlined
-					spin={true}
-					style={{ fontSize: '20px', color: 'red' }}
+		<Card>
+			<Flex
+				alignItems='center'
+				justifyContent='between'
+				mobileFlex={false}
+			>
+				<Flex className='mb-1' mobileFlex={false}>
+					<div className='mr-md-3 mb-3'>
+						<Input
+							placeholder='Search'
+							prefix={<SearchOutlined />}
+							onChange={(e) => onSearch(e)}
+						/>
+					</div>
+					<div className='mb-3'>
+						<Select
+							defaultValue='Types'
+							className='w-100'
+							style={{ minWidth: 180 }}
+							onChange={handleShowType}
+							placeholder='Types'
+						>
+							<Option value='Types'>Types</Option>
+							{types.map((elm, i) => (
+								<Option key={i} value={elm}>
+									{elm}
+								</Option>
+							))}
+						</Select>
+					</div>
+				</Flex>
+				<Flex mobileFlex={false} justifyContent='end'>
+					<div className='mr-1'>
+						<Button
+							onClick={addKey}
+							type='primary'
+							icon={<PlusCircleOutlined />}
+							block
+						>
+							Add
+						</Button>
+					</div>
+					<div>
+						<Button
+							onClick={deleteKey}
+							type='danger'
+							icon={<DeleteOutlined />}
+							block
+							disabled={true}
+						>
+							Delete choose items
+						</Button>
+					</div>
+				</Flex>
+			</Flex>
+			<div className='table-responsive'>
+				<Table
+					columns={tableColumns}
+					dataSource={list}
+					rowKey='name'
+					rowSelection={{
+						type: 'checkbox',
+						...rowSelection,
+					}}
+					bordered={true}
 				/>
 			</div>
-			<div className='mt-3 typography'>
-				<Title>h1. Ant Design</Title>
-				<Title level={2}>h2. Ant Design</Title>
-				<Title level={3}>h3. Ant Design</Title>
-				<Title level={4}>h4. Ant Design</Title>
-				<Title level={5}>h5. Ant Design</Title>
-			</div>
-			<div className='grid'>
-				<Row>
-					<Col span={24}>col</Col>
-				</Row>
-				<Row>
-					<Col span={12}>col-12</Col>
-					<Col span={12}>col-12</Col>
-				</Row>
-				<Row>
-					<Col span={8}>col-8</Col>
-					<Col span={8}>col-8</Col>
-					<Col span={8}>col-8</Col>
-				</Row>
-				<Row>
-					<Col span={6}>col-6</Col>
-					<Col span={6}>col-6</Col>
-					<Col span={6}>col-6</Col>
-					<Col span={6}>col-6</Col>
-				</Row>
-			</div>
-			<div className='mt-3 pagination'>
-				<Pagination defaultCurrent={6} total={500} />
-			</div>
-		</>
+		</Card>
 	)
 }
 
