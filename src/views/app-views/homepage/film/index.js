@@ -77,7 +77,7 @@ const Film = () => {
 			title: 'Thumbnails',
 			dataIndex: 'thumbnails',
 			render: (_, record) => {
-				return <img src={record.thumbnails} alt='' width={50} />
+				return <img src={record.thumbnails} alt='' width={40} />
 			},
 		},
 		{
@@ -198,15 +198,16 @@ const Film = () => {
 		<Card>
 			<Flex alignItems='center' justifyContent='start' mobileFlex={false}>
 				<Flex className='mb-1' mobileFlex={false}>
-					<div className='mr-3 mb-2'>
+					<div className='mr-md-3 mb-3'>
 						<Input
+							style={{ minWidth: 180 }}
 							className='w-100'
 							placeholder='Search'
 							prefix={<SearchOutlined />}
 							onChange={(e) => onSearch(e)}
 						/>
 					</div>
-					<div className='mr-3 mb-2'>
+					<div className='mr-md-3 mb-3'>
 						<Select
 							defaultValue='Types'
 							className='w-100'
@@ -222,7 +223,7 @@ const Film = () => {
 							))}
 						</Select>
 					</div>
-					<div className='mr-3 mb-2'>
+					<div className='mr-md-3 mb-3'>
 						<Select
 							defaultValue='Slider'
 							className='w-100'
@@ -238,7 +239,7 @@ const Film = () => {
 							))}
 						</Select>
 					</div>
-					<div className='mr-3 mb-2'>
+					<div className='mb-3'>
 						<Select
 							defaultValue='Recommend'
 							className='w-100'
@@ -258,7 +259,7 @@ const Film = () => {
 			</Flex>
 			<Flex alignItems='center' justifyContent='start' mobileFlex={false}>
 				<Flex className='mb-1' mobileFlex={false}>
-					<div className='mr-3 mb-2'>
+					<div className='mr-md-3 mb-3'>
 						<Select
 							defaultValue='Theater'
 							className='w-100'
@@ -274,7 +275,7 @@ const Film = () => {
 							))}
 						</Select>
 					</div>
-					<div className='mr-3 mb-2'>
+					<div className='mr-md-3 mb-3'>
 						<Select
 							defaultValue='License'
 							className='w-100'
@@ -290,7 +291,7 @@ const Film = () => {
 							))}
 						</Select>
 					</div>
-					<div className='mr-3 mb-2'>
+					<div className='mr-md-3 mb-3'>
 						<Select
 							defaultValue='Publish'
 							className='w-100'
@@ -306,7 +307,7 @@ const Film = () => {
 							))}
 						</Select>
 					</div>
-					<div className='mr-3 mb-2'>
+					<div className='mb-3'>
 						<Select
 							defaultValue='Status'
 							className='w-100'
@@ -330,7 +331,7 @@ const Film = () => {
 				mobileFlex={false}
 				justifyContent='end'
 			>
-				<div className='mr-1'>
+				<div className='ml-1 mb-3'>
 					<Button
 						onClick={addKey}
 						type='primary'
@@ -340,7 +341,7 @@ const Film = () => {
 						Add
 					</Button>
 				</div>
-				<div>
+				<div className='ml-1 mb-3'>
 					<Button
 						onClick={deleteKey}
 						type='danger'

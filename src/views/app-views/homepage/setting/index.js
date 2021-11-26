@@ -88,14 +88,11 @@ const Setting = () => {
 
 	return (
 		<Card>
-			<Flex
-				alignItems='center'
-				justifyContent='between'
-				mobileFlex={false}
-			>
+			<Flex alignItems='center' justifyContent='start' mobileFlex={false}>
 				<Flex className='mb-1' mobileFlex={false}>
 					<div className='mr-md-3 mb-3'>
 						<Input
+							style={{ minWidth: 180 }}
 							placeholder='Search'
 							prefix={<SearchOutlined />}
 							onChange={(e) => onSearch(e)}
@@ -104,7 +101,6 @@ const Setting = () => {
 					<div className='mb-3'>
 						<Select
 							defaultValue='Types'
-							className='w-100'
 							style={{ minWidth: 180 }}
 							onChange={handleShowType}
 							placeholder='Types'
@@ -118,39 +114,39 @@ const Setting = () => {
 						</Select>
 					</div>
 				</Flex>
-				<Flex mobileFlex={false} justifyContent='end'>
-					<div className='mr-1'>
-						<Button
-							onClick={addKey}
-							type='primary'
-							icon={<PlusCircleOutlined />}
-							block
-						>
-							Add key
-						</Button>
-					</div>
-					<div className='mr-1'>
-						<Button
-							onClick={deleteCache}
-							type='danger'
-							icon={<DeleteOutlined />}
-							block
-						>
-							Delete Cache
-						</Button>
-					</div>
-					<div>
-						<Button
-							onClick={deleteKey}
-							type='danger'
-							icon={<DeleteOutlined />}
-							block
-							disabled={true}
-						>
-							Delete key
-						</Button>
-					</div>
-				</Flex>
+			</Flex>
+			<Flex mobileFlex={false} justifyContent='end'>
+				<div className='ml-1 mb-3'>
+					<Button
+						onClick={addKey}
+						type='primary'
+						icon={<PlusCircleOutlined />}
+						block
+					>
+						Add key
+					</Button>
+				</div>
+				<div className='ml-1 mb-3'>
+					<Button
+						onClick={deleteCache}
+						type='danger'
+						icon={<DeleteOutlined />}
+						block
+					>
+						Delete Cache
+					</Button>
+				</div>
+				<div className='ml-1 mb-3'>
+					<Button
+						onClick={deleteKey}
+						type='danger'
+						icon={<DeleteOutlined />}
+						block
+						disabled={true}
+					>
+						Delete key
+					</Button>
+				</div>
 			</Flex>
 			<div className='table-responsive'>
 				<Table
