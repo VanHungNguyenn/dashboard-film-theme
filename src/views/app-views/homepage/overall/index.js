@@ -1,13 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'antd'
-import {
-	FileDoneOutlined,
-	BarChartOutlined,
-	SyncOutlined,
-	UserSwitchOutlined,
-} from '@ant-design/icons'
 
-import OverallData from 'assets/data/overall.data.json'
+import OverallData from 'assets/data/overall.data.js'
 import DataDisplayWidget from 'components/shared-components/DataDisplayWidget'
 
 const DisplayDataSet = () => {
