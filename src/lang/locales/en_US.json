@@ -2,6 +2,7 @@
 	"home": "Home",
 
 	"sidenav.homepage": "Manage",
+	"sidenav.homepage.overall": "Overall",
 	"sidenav.homepage.film": "Film",
 	"sidenav.homepage.list": "List",
 	"sidenav.homepage.category.list": "Category",

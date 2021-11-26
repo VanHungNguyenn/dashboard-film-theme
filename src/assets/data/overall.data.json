@@ -1,0 +1,30 @@
+[
+	{
+		"id": 1,
+		"icon": "<FileDoneOutlined />",
+		"value": "11,831",
+		"title": "Total order",
+		"color": "cyan"
+	},
+	{
+		"id": 2,
+		"icon": "<BarChartOutlined />",
+		"value": "$6,922",
+		"title": "Total profit",
+		"color": "gold"
+	},
+	{
+		"id": 3,
+		"icon": "<SyncOutlined />",
+		"value": "11,831",
+		"title": "Total order",
+		"color": "gold"
+	},
+	{
+		"id": 4,
+		"icon": "<UserSwitchOutlined />",
+		"value": "11,831",
+		"title": "Total order",
+		"color": "cyan"
+	}
+]

@@ -30,6 +30,7 @@ import {
 	FileImageOutlined,
 	SettingOutlined,
 	PlayCircleOutlined,
+	LineChartOutlined,
 } from '@ant-design/icons'
 import { APP_PREFIX_PATH, AUTH_PREFIX_PATH } from 'configs/AppConfig'
 
@@ -184,6 +185,14 @@ const homepageNavTree = [
 		icon: DashboardOutlined,
 		breadcrumb: false,
 		submenu: [
+			{
+				key: 'homepage-overall',
+				path: `${APP_PREFIX_PATH}/homepage/overall`,
+				title: 'sidenav.homepage.overall',
+				icon: LineChartOutlined,
+				breadcrumb: true,
+				submenu: [],
+			},
 			{
 				key: 'homepage-film',
 				path: `${APP_PREFIX_PATH}/homepage/film`,

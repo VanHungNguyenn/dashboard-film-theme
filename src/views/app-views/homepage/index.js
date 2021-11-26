@@ -6,6 +6,10 @@ const Homepage = ({ match }) => (
 	<Suspense fallback={<Loading cover='content' />}>
 		<Switch>
 			<Route
+				path={`${match.url}/overall`}
+				component={lazy(() => import(`./overall`))}
+			/>
+			<Route
 				path={`${match.url}/film`}
 				component={lazy(() => import(`./film`))}
 			/>
@@ -33,7 +37,7 @@ const Homepage = ({ match }) => (
 				path={`${match.url}/setting`}
 				component={lazy(() => import(`./setting`))}
 			/>
-			<Redirect from={`${match.url}`} to={`${match.url}/film`} />
+			<Redirect from={`${match.url}`} to={`${match.url}/overall`} />
 		</Switch>
 	</Suspense>
 )
