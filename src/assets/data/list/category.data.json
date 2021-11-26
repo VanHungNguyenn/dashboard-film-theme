@@ -1,0 +1,100 @@
+[
+	{
+		"id": 1,
+		"title": "Soap",
+		"url": "soap",
+		"googleIndex": true,
+		"date": "26/09/2021"
+	},
+	{
+		"id": 2,
+		"title": "Kids",
+		"url": "kids",
+		"googleIndex": true,
+		"date": "04/06/2021"
+	},
+	{
+		"id": 3,
+		"title": "War & Politics",
+		"url": "war-politics",
+		"googleIndex": false,
+		"date": "14/08/2021"
+	},
+	{
+		"id": 4,
+		"title": "Talk",
+		"url": "talk",
+		"googleIndex": false,
+		"date": "20/12/2020"
+	},
+	{
+		"id": 5,
+		"title": "Action & Adventure",
+		"url": "action-adventure",
+		"googleIndex": false,
+		"date": "10/12/2020"
+	},
+	{
+		"id": 6,
+		"title": "Reality",
+		"url": "reality",
+		"googleIndex": true,
+		"date": "22/07/2021"
+	},
+	{
+		"id": 7,
+		"title": "News",
+		"url": "news",
+		"googleIndex": true,
+		"date": "15/11/2021"
+	},
+	{
+		"id": 8,
+		"title": "Sci-Fi & Fantasy",
+		"url": "sci-fi-fantasy",
+		"googleIndex": true,
+		"date": "27/11/2020"
+	},
+	{
+		"id": 9,
+		"title": "Documentary",
+		"url": "documentary",
+		"googleIndex": true,
+		"date": "09/03/2021"
+	},
+	{
+		"id": 10,
+		"title": "Mystery",
+		"url": "mystery",
+		"googleIndex": false,
+		"date": "12/04/2021"
+	},
+	{
+		"id": 11,
+		"title": "War",
+		"url": "war",
+		"googleIndex": true,
+		"date": "25/01/2021"
+	},
+	{
+		"id": 12,
+		"title": "Animation",
+		"url": "animation",
+		"googleIndex": false,
+		"date": "10/10/2021"
+	},
+	{
+		"id": 13,
+		"title": "Comedy",
+		"url": "comedy",
+		"googleIndex": false,
+		"date": "16/09/2021"
+	},
+	{
+		"id": 14,
+		"title": "Romance",
+		"url": "romance",
+		"googleIndex": false,
+		"date": "12/12/2020"
+	}
+]

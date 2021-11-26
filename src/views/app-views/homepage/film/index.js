@@ -6,18 +6,16 @@ import {
 	SearchOutlined,
 	PlusCircleOutlined,
 	EditOutlined,
+	CheckOutlined,
+	FolderOutlined,
+	FolderAddOutlined,
+	GlobalOutlined,
+	PoweroffOutlined,
+	CopyrightOutlined,
+	LikeOutlined,
+	SlidersOutlined,
+	YoutubeOutlined,
 } from '@ant-design/icons'
-import { SiSlides } from 'react-icons/si'
-import { GiFilmSpool } from 'react-icons/gi'
-import { GrLicense } from 'react-icons/gr'
-import { IoMdDoneAll } from 'react-icons/io'
-import { BiWorld } from 'react-icons/bi'
-import {
-	AiOutlineStar,
-	AiOutlinePoweroff,
-	AiFillFileAdd,
-	AiOutlineDatabase,
-} from 'react-icons/ai'
 
 import Flex from 'components/shared-components/Flex'
 import utils from 'utils'
@@ -102,7 +100,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<SiSlides />}
+							icon={<SlidersOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -110,7 +108,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<AiOutlineStar />}
+							icon={<LikeOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -118,7 +116,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<GiFilmSpool />}
+							icon={<YoutubeOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -126,7 +124,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<GrLicense />}
+							icon={<CopyrightOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -134,7 +132,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<AiOutlinePoweroff />}
+							icon={<PoweroffOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -142,7 +140,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<IoMdDoneAll />}
+							icon={<CheckOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -158,7 +156,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<BiWorld />}
+							icon={<GlobalOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -166,7 +164,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<AiFillFileAdd />}
+							icon={<FolderAddOutlined />}
 							size='small'
 						/>
 					</Tooltip>
@@ -174,7 +172,7 @@ const Film = () => {
 						<Button
 							type='default'
 							className='mr-2'
-							icon={<AiOutlineDatabase />}
+							icon={<FolderOutlined />}
 							size='small'
 						/>
 					</Tooltip>

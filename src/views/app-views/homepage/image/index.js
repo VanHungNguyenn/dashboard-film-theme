@@ -156,7 +156,7 @@ const Image = () => {
 				<Table
 					columns={tableColumns}
 					dataSource={list}
-					rowKey='name'
+					rowKey='id'
 					rowSelection={{
 						type: 'checkbox',
 						...rowSelection,
