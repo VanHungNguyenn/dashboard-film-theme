@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Card, Table, Select, Input, Button, Tooltip } from 'antd'
+import {
+	Card,
+	Table,
+	Select,
+	Input,
+	Button,
+	Tooltip,
+	message,
+	Modal,
+} from 'antd'
 import FilmData from 'assets/data/film.data.json'
 import {
 	DeleteOutlined,
@@ -34,6 +43,12 @@ const Film = () => {
 	const [list, setList] = useState(FilmData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+	const [modalVisible, setModalVisible] = useState(false)
+
+	const deleteUser = (userId) => {
+		setList(list.filter((item) => item.name !== userId))
+		message.success({ content: `Deleted ${userId}`, duration: 2 })
+	}
 
 	const onSearch = (e) => {
 		const value = e.currentTarget.value
@@ -60,7 +75,9 @@ const Film = () => {
 	const handleShowPublish = (value) => {}
 	const handleShowStatus = (value) => {}
 
-	const addKey = () => {}
+	const addKey = () => {
+		setModalVisible(true)
+	}
 	const deleteKey = () => {}
 
 	const rowSelection = {
@@ -185,7 +202,14 @@ const Film = () => {
 						/>
 					</Tooltip>
 					<Tooltip title='Delete'>
-						<Button danger icon={<DeleteOutlined />} size='small' />
+						<Button
+							danger
+							icon={<DeleteOutlined />}
+							onClick={() => {
+								deleteUser(elm.name)
+							}}
+							size='small'
+						/>
 					</Tooltip>
 				</div>
 			),
@@ -364,6 +388,17 @@ const Film = () => {
 					bordered={true}
 				/>
 			</div>
+			<Modal
+				title='Add new'
+				style={{ top: 20 }}
+				visible={modalVisible}
+				onOk={() => setModalVisible(false)}
+				onCancel={() => setModalVisible(false)}
+			>
+				<p>some contents...</p>
+				<p>some contents...</p>
+				<p>some contents...</p>
+			</Modal>
 		</Card>
 	)
 }
