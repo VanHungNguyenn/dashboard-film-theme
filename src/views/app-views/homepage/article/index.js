@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Table, Select, Input, Button, Tooltip } from 'antd'
+import { Card, Table, Select, Input, Button, Tooltip, message } from 'antd'
 import VideoData from 'assets/data/article.data.json'
 import {
 	DeleteOutlined,
@@ -19,6 +19,11 @@ const Article = () => {
 	const [list, setList] = useState(VideoData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+
+	const deleteUser = (userId) => {
+		setList(list.filter((item) => item.title !== userId))
+		message.success({ content: `Deleted ${userId}`, duration: 2 })
+	}
 
 	const onSearch = (e) => {
 		const value = e.currentTarget.value
@@ -86,7 +91,14 @@ const Article = () => {
 						/>
 					</Tooltip>
 					<Tooltip title='Delete'>
-						<Button danger icon={<DeleteOutlined />} size='small' />
+						<Button
+							onClick={() => {
+								deleteUser(elm.title)
+							}}
+							danger
+							icon={<DeleteOutlined />}
+							size='small'
+						/>
 					</Tooltip>
 				</div>
 			),

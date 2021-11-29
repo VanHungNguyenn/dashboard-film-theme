@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Card, Table, Select, Input, Button, Tooltip, Switch } from 'antd'
+import {
+	Card,
+	Table,
+	Select,
+	Input,
+	Button,
+	Tooltip,
+	Switch,
+	message,
+} from 'antd'
 import CategoryData from 'assets/data/list/category.data.json'
 import {
 	DeleteOutlined,
@@ -48,6 +57,22 @@ const Category = () => {
 		},
 	}
 
+	const onChangeChecked = (checked, title) => {
+		if (checked) {
+			checked = false
+			message.success({
+				content: `Đã bật Google Index cho ${title}`,
+				duration: 2,
+			})
+		} else {
+			checked = true
+			message.success({
+				content: `Đã tắt Google Index cho ${title}`,
+				duration: 2,
+			})
+		}
+	}
+
 	const tableColumns = [
 		{
 			title: 'Title',
@@ -64,7 +89,14 @@ const Category = () => {
 			title: 'Google Index',
 			dataIndex: 'googleIndex',
 			render: (_, record) => {
-				return <Switch checked={record.googleIndex} />
+				return (
+					<Switch
+						defaultChecked={record.googleIndex}
+						onChange={(checked) =>
+							onChangeChecked(checked, record.title)
+						}
+					/>
+				)
 			},
 			sorter: (a, b) => utils.antdTableSorter(a, b, 'googleIndex'),
 		},

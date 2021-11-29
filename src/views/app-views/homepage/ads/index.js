@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Table, Select, Input, Button, Tooltip } from 'antd'
+import { Card, Table, Select, Input, Button, Tooltip, message } from 'antd'
 import AdsData from 'assets/data/ads.data.json'
 import {
 	DeleteOutlined,
@@ -19,6 +19,11 @@ const Ads = () => {
 	const [list, setList] = useState(AdsData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+
+	const deleteUser = (userId) => {
+		setList(list.filter((item) => item.key !== userId))
+		message.success({ content: `Deleted ${userId}`, duration: 2 })
+	}
 
 	const onSearch = (e) => {
 		const value = e.currentTarget.value
@@ -87,7 +92,14 @@ const Ads = () => {
 						/>
 					</Tooltip>
 					<Tooltip title='Delete'>
-						<Button danger icon={<DeleteOutlined />} size='small' />
+						<Button
+							onClick={() => {
+								deleteUser(elm.key)
+							}}
+							danger
+							icon={<DeleteOutlined />}
+							size='small'
+						/>
 					</Tooltip>
 				</div>
 			),
