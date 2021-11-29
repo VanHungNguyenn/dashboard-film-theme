@@ -25,6 +25,7 @@ import {
 	SlidersOutlined,
 	YoutubeOutlined,
 } from '@ant-design/icons'
+import ModalAddNew from './modalAddNew'
 
 import Flex from 'components/shared-components/Flex'
 import utils from 'utils'
@@ -375,6 +376,10 @@ const Film = () => {
 					</Button>
 				</div>
 			</Flex>
+			<ModalAddNew
+				modalVisible={modalVisible}
+				setModalVisible={setModalVisible}
+			/>
 			<div className='table-responsive'>
 				<Table
 					className='w-100'
@@ -388,17 +393,6 @@ const Film = () => {
 					bordered={true}
 				/>
 			</div>
-			<Modal
-				title='Add new'
-				style={{ top: 20 }}
-				visible={modalVisible}
-				onOk={() => setModalVisible(false)}
-				onCancel={() => setModalVisible(false)}
-			>
-				<p>some contents...</p>
-				<p>some contents...</p>
-				<p>some contents...</p>
-			</Modal>
 		</Card>
 	)
 }

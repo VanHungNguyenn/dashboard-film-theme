@@ -178,6 +178,7 @@ const Category = () => {
 					</Button>
 				</div>
 			</Flex>
+
 			<div className='table-responsive'>
 				<Table
 					columns={tableColumns}
