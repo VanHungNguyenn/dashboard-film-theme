@@ -50,6 +50,11 @@ const Category = () => {
 	const addKey = () => {}
 	const deleteKey = () => {}
 
+	const deleteUser = (userId) => {
+		setList(list.filter((item) => item.title !== userId))
+		message.success({ content: `Deleted ${userId}`, duration: 2 })
+	}
+
 	const rowSelection = {
 		onChange: (key, rows) => {
 			setSelectedRows(rows)
@@ -118,7 +123,14 @@ const Category = () => {
 						/>
 					</Tooltip>
 					<Tooltip title='Delete'>
-						<Button danger icon={<DeleteOutlined />} size='small' />
+						<Button
+							onClick={() => {
+								deleteUser(elm.title)
+							}}
+							danger
+							icon={<DeleteOutlined />}
+							size='small'
+						/>
 					</Tooltip>
 				</div>
 			),

@@ -256,6 +256,14 @@ const homepageNavTree = [
 						breadcrumb: true,
 						submenu: [],
 					},
+					{
+						key: 'homepage-code-list',
+						path: `${APP_PREFIX_PATH}/homepage/list/code`,
+						title: 'sidenav.homepage.code.list',
+						icon: '',
+						breadcrumb: true,
+						submenu: [],
+					},
 				],
 			},
 			{

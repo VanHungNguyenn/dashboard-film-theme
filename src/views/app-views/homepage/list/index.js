@@ -6,6 +6,7 @@ import Actor from './actor'
 import Director from './director'
 import Tags from './tags'
 import Server from './server'
+import Code from './code'
 
 const List = (props) => {
 	const { match } = props
@@ -23,6 +24,7 @@ const List = (props) => {
 			<Route path={`${match.url}/director`} component={Director} />
 			<Route path={`${match.url}/tags`} component={Tags} />
 			<Route path={`${match.url}/server`} component={Server} />
+			<Route path={`${match.url}/code`} component={Code} />
 		</Switch>
 	)
 }

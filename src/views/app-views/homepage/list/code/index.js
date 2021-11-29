@@ -9,7 +9,7 @@ import {
 	Switch,
 	message,
 } from 'antd'
-import CountryData from 'assets/data/list/country.data.json'
+import CodeData from 'assets/data/list/code.data.json'
 import {
 	DeleteOutlined,
 	SearchOutlined,
@@ -24,14 +24,14 @@ const { Option } = Select
 
 const googleIndex = [true, false]
 
-const Country = () => {
-	const [list, setList] = useState(CountryData)
+const Code = () => {
+	const [list, setList] = useState(CodeData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
 
 	const onSearch = (e) => {
 		const value = e.currentTarget.value
-		const searchArray = e.currentTarget.value ? list : CountryData
+		const searchArray = e.currentTarget.value ? list : CodeData
 		const data = utils.wildCardSearch(searchArray, value)
 		setList(data)
 		setSelectedRowKeys([])
@@ -40,10 +40,10 @@ const Country = () => {
 	const handleShowType = (value) => {
 		if (value !== 'GoogleIndex') {
 			const key = 'googleIndex'
-			const data = utils.filterArray(CountryData, key, value)
+			const data = utils.filterArray(CodeData, key, value)
 			setList(data)
 		} else {
-			setList(CountryData)
+			setList(CodeData)
 		}
 	}
 
@@ -207,4 +207,4 @@ const Country = () => {
 	)
 }
 
-export default Country
+export default Code
