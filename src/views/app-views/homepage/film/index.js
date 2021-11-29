@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
-import {
-	Card,
-	Table,
-	Select,
-	Input,
-	Button,
-	Tooltip,
-	message,
-	Modal,
-} from 'antd'
+import { Card, Table, Select, Input, Button, Tooltip, message } from 'antd'
 import FilmData from 'assets/data/film.data.json'
 import {
 	DeleteOutlined,

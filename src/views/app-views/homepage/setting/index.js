@@ -7,7 +7,7 @@ import {
 	PlusCircleOutlined,
 	EditOutlined,
 } from '@ant-design/icons'
-
+import ModalAddNew from './modalAddNew'
 import Flex from 'components/shared-components/Flex'
 import utils from 'utils'
 
@@ -19,6 +19,7 @@ const Setting = () => {
 	const [list, setList] = useState(SettingData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+	const [modalVisible, setModalVisible] = useState(false)
 
 	const deleteUser = (userId) => {
 		setList(list.filter((item) => item.key !== userId))
@@ -43,7 +44,9 @@ const Setting = () => {
 		}
 	}
 
-	const addKey = () => {}
+	const addKey = () => {
+		setModalVisible(true)
+	}
 	const deleteCache = () => {}
 	const deleteKey = () => {}
 
@@ -160,6 +163,11 @@ const Setting = () => {
 					</Button>
 				</div>
 			</Flex>
+			{/* Modal */}
+			<ModalAddNew
+				modalVisible={modalVisible}
+				setModalVisible={setModalVisible}
+			/>
 			<div className='table-responsive'>
 				<Table
 					columns={tableColumns}

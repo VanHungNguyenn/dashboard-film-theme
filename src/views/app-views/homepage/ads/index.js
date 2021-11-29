@@ -7,6 +7,7 @@ import {
 	PlusCircleOutlined,
 	EditOutlined,
 } from '@ant-design/icons'
+import ModalAddNew from './modalAddNew'
 
 import Flex from 'components/shared-components/Flex'
 import utils from 'utils'
@@ -19,6 +20,7 @@ const Ads = () => {
 	const [list, setList] = useState(AdsData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+	const [modalVisible, setModalVisible] = useState(false)
 
 	const deleteUser = (userId) => {
 		setList(list.filter((item) => item.key !== userId))
@@ -43,7 +45,9 @@ const Ads = () => {
 		}
 	}
 
-	const addKey = () => {}
+	const addKey = () => {
+		setModalVisible(true)
+	}
 	const deleteKey = () => {}
 
 	const rowSelection = {
@@ -159,6 +163,11 @@ const Ads = () => {
 					</Button>
 				</div>
 			</Flex>
+			{/* Modal */}
+			<ModalAddNew
+				modalVisible={modalVisible}
+				setModalVisible={setModalVisible}
+			/>
 			<div className='table-responsive'>
 				<Table
 					columns={tableColumns}
