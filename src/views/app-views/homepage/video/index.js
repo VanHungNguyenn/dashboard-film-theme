@@ -8,9 +8,9 @@ import {
 	EditOutlined,
 } from '@ant-design/icons'
 
+import ModalAddNew from './modalAddNew'
 import Flex from 'components/shared-components/Flex'
 import utils from 'utils'
-
 const { Option } = Select
 
 const types = ['Active', 'Not active']
@@ -19,6 +19,7 @@ const Video = () => {
 	const [list, setList] = useState(VideoData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+	const [modalVisible, setModalVisible] = useState(false)
 
 	const deleteUser = (userId) => {
 		setList(list.filter((item) => item.title !== userId))
@@ -43,7 +44,9 @@ const Video = () => {
 		}
 	}
 
-	const addKey = () => {}
+	const addKey = () => {
+		setModalVisible(true)
+	}
 	const deleteKey = () => {}
 
 	const rowSelection = {
@@ -162,6 +165,11 @@ const Video = () => {
 					</Button>
 				</div>
 			</Flex>
+			{/* Modal */}
+			<ModalAddNew
+				modalVisible={modalVisible}
+				setModalVisible={setModalVisible}
+			/>
 			<div className='table-responsive'>
 				<Table
 					columns={tableColumns}

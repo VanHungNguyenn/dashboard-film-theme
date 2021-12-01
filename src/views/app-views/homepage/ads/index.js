@@ -167,6 +167,7 @@ const Ads = () => {
 			<ModalAddNew
 				modalVisible={modalVisible}
 				setModalVisible={setModalVisible}
+				types={types}
 			/>
 			<div className='table-responsive'>
 				<Table

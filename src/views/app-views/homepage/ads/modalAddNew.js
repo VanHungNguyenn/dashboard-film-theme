@@ -3,7 +3,9 @@ import { Modal, Row, Col, Input, Form, Select } from 'antd'
 const { Option } = Select
 const { TextArea } = Input
 
-const Modaladdnew = ({ modalVisible, setModalVisible }) => {
+const Modaladdnew = ({ modalVisible, setModalVisible, types }) => {
+	console.log(types)
+
 	const handleOk = () => {
 		setModalVisible(false)
 	}
@@ -51,16 +53,19 @@ const Modaladdnew = ({ modalVisible, setModalVisible }) => {
 										]}
 									>
 										<Select
-											initialvalues='all'
+											initialvalues={types[0]}
 											placeholder='Type'
 										>
-											<Option value='all'>All</Option>
-											<Option value='mobile'>
-												Mobile
-											</Option>
-											<Option value='desktop'>
-												Desktop
-											</Option>
+											{types.map((type, i) => {
+												return (
+													<Option
+														key={i}
+														value={type.toLowerCase()}
+													>
+														{type}
+													</Option>
+												)
+											})}
 										</Select>
 									</Form.Item>
 								</Col>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Card, Table, Select, Input, Button, Tooltip, message } from 'antd'
-import VideoData from 'assets/data/article.data.json'
+import ArticleData from 'assets/data/article.data.json'
 import {
 	DeleteOutlined,
 	SearchOutlined,
 	PlusCircleOutlined,
 	EditOutlined,
 } from '@ant-design/icons'
-
+import ModalAddNew from './modalAddNew'
 import Flex from 'components/shared-components/Flex'
 import utils from 'utils'
 
@@ -16,9 +16,10 @@ const { Option } = Select
 const types = ['Active', 'Not active']
 
 const Article = () => {
-	const [list, setList] = useState(VideoData)
+	const [list, setList] = useState(ArticleData)
 	const [selectedRows, setSelectedRows] = useState([])
 	const [selectedRowKeys, setSelectedRowKeys] = useState([])
+	const [modalVisible, setModalVisible] = useState(false)
 
 	const deleteUser = (userId) => {
 		setList(list.filter((item) => item.title !== userId))
@@ -27,7 +28,7 @@ const Article = () => {
 
 	const onSearch = (e) => {
 		const value = e.currentTarget.value
-		const searchArray = e.currentTarget.value ? list : VideoData
+		const searchArray = e.currentTarget.value ? list : ArticleData
 		const data = utils.wildCardSearch(searchArray, value)
 		setList(data)
 		setSelectedRowKeys([])
@@ -36,14 +37,16 @@ const Article = () => {
 	const handleShowType = (value) => {
 		if (value !== 'Status') {
 			const key = 'active'
-			const data = utils.filterArray(VideoData, key, value)
+			const data = utils.filterArray(ArticleData, key, value)
 			setList(data)
 		} else {
-			setList(VideoData)
+			setList(ArticleData)
 		}
 	}
 
-	const addKey = () => {}
+	const addKey = () => {
+		setModalVisible(true)
+	}
 	const deleteKey = () => {}
 
 	const rowSelection = {
@@ -158,6 +161,11 @@ const Article = () => {
 					</Button>
 				</div>
 			</Flex>
+			{/* Modal */}
+			<ModalAddNew
+				modalVisible={modalVisible}
+				setModalVisible={setModalVisible}
+			/>
 			<div className='table-responsive'>
 				<Table
 					columns={tableColumns}

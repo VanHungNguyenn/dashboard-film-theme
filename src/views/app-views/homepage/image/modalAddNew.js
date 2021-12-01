@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, Row, Col, Form, Select } from 'antd'
+
 const { Option } = Select
 
 const Modaladdnew = ({ modalVisible, setModalVisible, types }) => {
@@ -51,6 +52,12 @@ const Modaladdnew = ({ modalVisible, setModalVisible, types }) => {
 											})}
 										</Select>
 									</Form.Item>
+								</Col>
+								<Col xs={24}>
+									<Form.Item
+										label='File'
+										name='file'
+									></Form.Item>
 								</Col>
 							</Row>
 						</Form>

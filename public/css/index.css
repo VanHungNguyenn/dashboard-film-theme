@@ -21,3 +21,8 @@
 .loading .ant-spin {
     color: #3e79f7
 }
+
+.avatar-uploader>.ant-upload {
+    width: 128px;
+    height: 128px;
+}
